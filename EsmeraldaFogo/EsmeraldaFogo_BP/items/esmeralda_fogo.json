@@ -1,0 +1,33 @@
+{
+  "format_version": "1.21.10",
+  "minecraft:item": {
+    "description": {
+      "identifier": "calc14:esmeralda_fogo",
+      "menu_category": { "category": "items" }
+    },
+    "components": {
+      "minecraft:icon": "esmeralda_fogo",
+      "minecraft:display_name": { "value": "Esmeralda de Fogo" },
+
+      "minecraft:max_stack_size": 64,
+      "minecraft:hand_equipped": true,
+
+      "minecraft:use_animation": "bow",
+
+      "minecraft:use_modifiers": {
+        "use_duration": 0.1,
+        "movement_modifier": 1.0
+      },
+
+      "minecraft:projectile": {
+        "projectile_entity": "calc14:esmeralda_fireball",
+        "minimum_critical_power": 20
+      },
+
+      "minecraft:throwable": {
+        "max_draw_duration": 0.0,
+        "launch_power_scale": 5.0
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "calc14:esmeralda_fireball",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/items/esmeralda_fogo"
+      },
+      "geometry": {
+        "default": "geometry.esmeralda_fireball"
+      },
+      "render_controllers": [ "controller.render.default" ]
+    }
+  }
+}

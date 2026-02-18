@@ -1,0 +1,86 @@
+{
+  "format_version": "1.21.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "calc14:esmeralda_fireball",
+      "is_spawnable": false,
+      "is_summonable": false
+    },
+    "components": {
+      "minecraft:area_attack": {
+        "damage_per_tick": 50,
+        "damage_range": 1.5,
+        "cause": "entity_attack",
+        "entity_filter": {
+          "any_of": [
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "monster"
+            },
+            {
+              "test": "is_family",
+              "subject": "other",
+              "value": "dragon"
+            }
+          ]
+        }
+      },
+      "minecraft:collision_box": {
+        "width": 5,
+        "height": 5
+      },
+      "minecraft:scale": {
+        "value": 4.0
+      },
+      "minecraft:projectile": {
+        "power": 6.5,
+        "gravity": 0.03,
+        "fire_affected_by_griefing": true,
+        "inertia": 0.99,
+        "is_dangerous": true,
+        "offset": [
+          0,
+          1.4,
+          0.2
+        ],
+        "angle_offset": 0,
+        "multiple_targets": false,
+        "particle": "iconcrack",
+        "on_hit": {
+          "impact_damage": {
+            "damage": 150,
+            "knockback": true,
+            "catch_fire": true,
+            "destroy_on_hit": true,
+            "power_multiplier": 10
+          },
+          "mob_effect": {
+            "effect": "fatal_poison",
+            "duration": 150,
+            "durationeasy": 150,
+            "durationnormal": 140,
+            "durationhard": 130,
+            "amplifier": 10,
+            "ambient": true,
+            "visible": true
+          },
+          "arrow_effect": {
+            "apply_effect_to_blocking_targets": true
+          },
+          "catch_fire": true,
+          "ignite": true,
+          "douse_fire": true,
+          "on_fire_time": 20,
+          "particle_on_hit": {
+            "particle_type": "flame",
+            "num_particles": 10,
+            "on_entity_hit": true,
+            "on_other_hit": true
+          },
+          "remove_on_hit": {}
+        }
+      }
+    }
+  }
+}

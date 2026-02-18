@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "EsmeraldaFogo_RP",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "esmeralda_fogo": {
+      "textures": "textures/items/esmeralda_fogo"
+    }
+  }
+}
