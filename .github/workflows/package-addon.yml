@@ -1,4 +1,4 @@
-name: Package Addon Release
+name: Build and Release MCADDON
 
 on:
   push:
@@ -6,49 +6,39 @@ on:
       - 'v*'
 
 jobs:
-  package:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Create mcaddon package
+      - uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: sudo apt-get install -y zip
+      
+      - name: Create MCADDON package
         run: |
           cd EsmeraldaFogo
-          zip -r ../EsmeraldaFogo.zip EsmeraldaFogo_BP/ EsmeraldaFogo_RP/
-          cd ..
-          mv EsmeraldaFogo.zip EsmeraldaFogo.mcaddon
-
-      - name: Create release
+          zip -r -q ../EsmeraldaFogo.mcaddon EsmeraldaFogo_BP EsmeraldaFogo_RP
+          ls -lh ../EsmeraldaFogo.mcaddon
+      
+      - name: Upload to Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: |
-            EsmeraldaFogo.mcaddon
+          files: EsmeraldaFogo.mcaddon
           body: |
-            # Esmeralda de Fogo - Download
-
-            ## 📦 Como Instalar
-
-            ### Windows 10/11
-            1. **Download** o arquivo `EsmeraldaFogo.mcaddon`
-            2. Clique duas vezes no arquivo ou abra com **Minecraft Bedrock**
-            3. Minecraft abrirá e importará automaticamente
-            4. **Ative** ambos os pacotes ao criar um novo mundo
-
-            ### Mobile
-            1. Download o arquivo
-            2. Mova para a pasta de Addons do Minecraft
-            3. Abra Minecraft e ative na seleção de pacotes
-
-            ### Console (Xbox, PS, Switch)
-            1. Use o aplicativo de gerenciador de arquivos nativo
-            2. Coloque na pasta de Addons do Minecraft
-            3. Ative no jogo
-
-            ## 🔥 Versão
-            ${{ github.ref_name }}
-
-            **Aproveite a Esmeralda de Fogo!**
+            # 🔥 Esmeralda de Fogo - Versão ${{ github.ref_name }}
+            
+            ## 📥 Instalação Rápida
+            
+            **Windows/Console:**
+            - Baixe o arquivo `.mcaddon`
+            - Clique duas vezes
+            - Minecraft importa automaticamente
+            
+            **Mobile:**
+            - Mova para pasta de Addons
+            - Abra Minecraft e ative
+            
+            Aproveite o addon!
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
