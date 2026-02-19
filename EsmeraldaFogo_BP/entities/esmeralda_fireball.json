@@ -9,7 +9,7 @@
     "components": {
       "minecraft:area_attack": {
         "damage_per_tick": 50,
-        "damage_range": 1.5,
+        "damage_range": 2.5,
         "cause": "entity_attack",
         "entity_filter": {
           "any_of": [
@@ -27,11 +27,11 @@
         }
       },
       "minecraft:collision_box": {
-        "width": 5,
-        "height": 5
+        "width": 0.5,
+        "height": 0.5
       },
       "minecraft:scale": {
-        "value": 4.0
+        "value": 1.5
       },
       "minecraft:projectile": {
         "power": 6.5,
@@ -41,11 +41,11 @@
         "is_dangerous": true,
         "offset": [
           0,
-          1.4,
-          0.2
+          0.5,
+          0.1
         ],
         "angle_offset": 0,
-        "multiple_targets": false,
+        "multiple_targets": true,
         "particle": "iconcrack",
         "on_hit": {
           "impact_damage": {
